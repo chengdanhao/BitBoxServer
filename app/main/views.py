@@ -19,10 +19,9 @@ def radio():
 		for i in form.radios:
 			if i[0] == form.choice.data:
 				session['choice'] = i[1]
-				break
 
 			if form.choice.data == 'off':
-				os.system("pkill mplayer")
+				os.system("pkill mplayer &")
 			else:
-				os.system("pkill mplayer && mplayer %s" % form.choice.data)
+				os.system("pkill mplayer ; mplayer %s &" % form.choice.data)
 	return render_template('radio.html', form=form, choice=session.get('choice'))
